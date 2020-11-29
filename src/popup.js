@@ -17,6 +17,9 @@ window.onload = function () {
       }
     );
     background.enabled = !background.enabled;
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.update(tabs[0].id, { url: tabs[0].url });
+    });
     updateLabel();
   };
 };
